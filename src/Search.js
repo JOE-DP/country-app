@@ -4,7 +4,7 @@ import styled from 'styled-components'
 function Search(props) {
   return (
     <Container>
-        <input type="text" onChange={props.countrySearchinput} value={props.countrySearch} placeholder='Search...'></input>
+        <input type="text" onChange={props.countrySearchinput} value={props.countrySearch} placeholder='Search for a country...'></input>
     </Container>
   );
 }

@@ -6,10 +6,10 @@ import CountryCard from './CountryCard';
 function Body(props) {
        
   return (
-    <Container style={{background: '#edf7F6'}}>
+    <Container>
         {props.countryData.map((item) =>{
             return(
-                <CountryCard item={item} />
+                <CountryCard item={item} colors={props.colors} />
             )
         })}
     </Container>
@@ -17,6 +17,7 @@ function Body(props) {
 }
 
 const Container = styled.div`
+margin-top: 5%;
 display: flex;
 flex-wrap: wrap;
 justify-content: center;

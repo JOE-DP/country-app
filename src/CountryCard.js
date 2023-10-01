@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 function CountryCard(props) {
   return (
-<Container style={{background: 'white'}}>
+<Container style={{background: props.colors.cardBackground}}>
     <div className='halfDivide'>
       <img src ={props.item['flags']['png']}></img>
     </div>
@@ -53,6 +53,7 @@ p{
 img{
     width: 270px;
     height: 166.4px;
+    border-radius: 5px;
 }
 .lineDivider{
     display: flex;
@@ -62,7 +63,8 @@ img{
 h1{
     font-size: 1.5em;
     text-align: center;
-    padding: -1%;;
+    padding: -1%;
+    margin-bottom: 2%;
 }
 
 `

@@ -8,6 +8,20 @@ import Body from './Body';
 function Main() {
     const [countrySearch, setCountrySearch] = useState('')
     const [countryData, setCountryData] = useState(false)
+    const [darkMode,  setDarkMode] = useState(false)
+    const [colors, setColors] = useState({background: '#edf7F6', cardBackground: '#643A6B', font: 'grey'})
+
+    function toggleDark(){
+        setDarkMode(!darkMode)
+        console.log(darkMode)
+    }
+    useEffect(() => {
+        if(!darkMode){
+            setColors({background: '#edf7F6', cardBackground: '#F4EEE0', font: 'grey'})
+        } else {
+            setColors({background: '#5F264A', cardBackground: '#643A6B', font: '#F4EEE0'})
+        }
+    }, [darkMode])
 
     function countrySearchinput(e){
         setCountrySearch(e.target.value)
@@ -33,23 +47,11 @@ function Main() {
     }
 }, [countrySearch])
 
-    //init the country data on page load
-    // useEffect(() => {
-    //     fetch(`https://restcountries.com/v3.1/all`)
-    //     .then(json => json.json())
-    //     .then((data) => {
-    //         setCountryData(data)
-    //     })
-        
-
-    // }, [])
-
-
   return (
-    <div style={{fontFamily: 'Lato'}}>
-      <Header />
+    <div style={{fontFamily: 'Lato', background: colors.background, color: colors.font}}>
+      <Header toggleDark={toggleDark}/>
       <Search countrySearchinput={countrySearchinput} countrySearch={countrySearch}/>
-      {countryData != false ? <Body countryData={countryData} /> : <p>No results, please try another search!</p>}
+      {countryData != false ? <Body countryData={countryData} colors={colors}/> : <p>No results, please try another search!</p>}
     </div>
   );
 }
